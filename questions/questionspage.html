@@ -10,10 +10,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>    
 <body>
-  <div class="uk-background-primary" style="height: 75px;">
+    <div class="uk-background-primary" style="height: 75px;">
+    </div>
+    <div class="uk-width-1-5 uk-align-right">
+        <a href="https://projectaccess.org/" target="_blank">
+          <img src="logo.png">
+        </a>
+    </div>
     <div class = "uk-position-top-center uk-text-center" style = "margin-top: 10%;"> 
-    <h3>Please fill out your details</h3>
-    <p>Predicted A Level Grades</p> 
+    <h3 class="uk-heading-small">Please fill out your details</h3>
+    <h4>Predicted A Level Grades</h4> 
     <div uk-form-custom="target: > * > span:first-child">
         Subject: 
         <select id = "1">
@@ -141,7 +147,7 @@
     <br><br>
     <button type="button" uk-icon="icon: plus-circle" class = "add-subject">Add Subject </button>
 
-    <p>Where do you live?</p>
+    <h4>Where do you live?</h4>
     <div uk-form-custom="target: > * > span:first-child">
             <select id = "7">
                 <option value="">Please select county</option>
@@ -158,7 +164,7 @@
                     <span uk-icon="icon: chevron-down"></span>
             </button> 
     </div>
-    <p>Do you require financial aid?</p>
+    <h4>Do you require financial aid?</h4>
     <div uk-form-custom="target: > * > span:first-child">
             <select id = "8">
                 <option value="">Select</option>
@@ -173,12 +179,11 @@
     <br>
     <br>
     <button class="uk-button uk-button-default" id = "backEvent">Back</button>
-    <button class="uk-button uk-button-default" id = "submitEvent">Submit</button>
+    <button class="uk-button uk-button-primary" id = "submitEvent">Submit</button>
     <br>
     <br>
 </div>
-    
-</div>
+
 
 <script>
 $(document).ready(function() { let x = `<div uk-form-custom="target: > * > span:first-child">
@@ -224,7 +229,7 @@ $(document).ready(function() { let x = `<div uk-form-custom="target: > * > span:
     </div> <br>`
     $(".add-subject").click(function(){$(".add-subject").after(x);
     $(".add-subject").remove();});
-    $("#backEvent").click(function(){location.href = "http://google.com";});
+    $("#backEvent").click(function(){location.href = "choice.html";});
     $("#submitEvent").click(function(){alert("AJ is so cool")});
 });
 </script>
