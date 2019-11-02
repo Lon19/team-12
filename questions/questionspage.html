@@ -212,7 +212,7 @@ $(document).ready(function() { let x = `<div uk-form-custom="target: > * > span:
     </div>
     <div uk-form-custom="target: > * > span:first-child">
             Grade:
-            <select>
+            <select id = "10">
                 <option value="">Please select grade</option>
                 <option value="">A*</option>
                 <option value="">A</option>
@@ -230,7 +230,19 @@ $(document).ready(function() { let x = `<div uk-form-custom="target: > * > span:
     $(".add-subject").click(function(){$(".add-subject").after(x);
     $(".add-subject").remove();});
     $("#backEvent").click(function(){location.href = "choice.html";});
-    $("#submitEvent").click(function(){alert("AJ is so cool")});
+    $("#submitEvent").click(function(){
+        let data = {
+            "subject1": $("#1").val(),
+            "grade1": $("#2").val(),
+            "subject2": $("#3").val(),
+            "grade2": $("#4").val(),
+            "subject3": $("#5").val(),
+            "grade3": $("#6").val(),
+            "subject4": $("#9").val(),
+            "grade4": $("#10").val(),
+        }
+        $.post("URL", data);
+    });
 });
 </script>
 
