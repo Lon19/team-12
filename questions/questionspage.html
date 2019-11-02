@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/js/uikit-icons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>    
+<body>
+  <div class="uk-background-primary" style="height: 75px;">
+    <div class = "uk-position-top-center uk-text-center" style = "margin-top: 10%;"> 
+    <h3>Please fill out your details</h3>
+    <p>Predicted A Level Grades</p> 
+    <div uk-form-custom="target: > * > span:first-child">
+        Subject: 
+        <select id = "1">
+            <option value="">Please select A Level Subject</option>
+            <option value="1">Art</option>
+            <option value="2">Biology</option>
+            <option value="3">Chemistry</option>
+            <option value="4">Computer Science</option>
+            <option value="5">Economics</option>
+            <option value="6">English</option>
+            <option value="7">Geography</option>
+            <option value="8">History</option>
+            <option value="9">Mathematics</option>
+            <option value="10">Music</option>
+            <option value="11">Physics</option>
+            <option value="12">Politics</option>
+            <option value="13">Psychology</option>
+            <option value="14">Religious Studies</option>
+        </select>
+        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+            <span></span>
+            <span uk-icon="icon: chevron-down"></span>
+        </button>
+    </div>
+    <div uk-form-custom="target: > * > span:first-child">
+            Grade:
+            <select id = "2">
+                <option value="">Please select grade</option>
+                <option value="">A*</option>
+                <option value="">A</option>
+                <option value="">B</option>
+                <option value="">C</option>
+                <option value="">D</option>
+                <option value="">E</option>
+                <option value="">U</option>
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                    <span></span>
+                    <span uk-icon="icon: chevron-down"></span>
+            </button> 
+    </div><br><br>
+    <div uk-form-custom="target: > * > span:first-child"> 
+        Subject:   
+        <select id = "3">
+            <option value="">Please select A Level Subject</option>
+            <option value="1">Art</option>
+            <option value="2">Biology</option>
+            <option value="3">Chemistry</option>
+            <option value="4">Computer Science</option>
+            <option value="5">Economics</option>
+            <option value="6">English</option>
+            <option value="7">Geography</option>
+            <option value="8">History</option>
+            <option value="9">Mathematics</option>
+            <option value="10">Music</option>
+            <option value="11">Physics</option>
+            <option value="12">Politics</option>
+            <option value="13">Psychology</option>
+            <option value="14">Religious Studies</option>
+        </select>
+        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+            <span></span>
+            <span uk-icon="icon: chevron-down"></span>
+        </button>
+    </div>
+    <div uk-form-custom="target: > * > span:first-child">
+            Grade:
+            <select id = "4">
+                <option value="">Please select grade</option>
+                <option value="">A*</option>
+                <option value="">A</option>
+                <option value="">B</option>
+                <option value="">C</option>
+                <option value="">D</option>
+                <option value="">E</option>
+                <option value="">U</option>
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                    <span></span>
+                    <span uk-icon="icon: chevron-down"></span>
+            </button> 
+    </div><br><br>
+    
+    <div uk-form-custom="target: > * > span:first-child">
+        Subject:     
+        <select id = "5">
+            <option value="">Please select A Level Subject</option>
+            <option value="1">Art</option>
+            <option value="2">Biology</option>
+            <option value="3">Chemistry</option>
+            <option value="4">Computer Science</option>
+            <option value="5">Economics</option>
+            <option value="6">English</option>
+            <option value="7">Geography</option>
+            <option value="8">History</option>
+            <option value="9">Mathematics</option>
+            <option value="10">Music</option>
+            <option value="11">Physics</option>
+            <option value="12">Politics</option>
+            <option value="13">Psychology</option>
+            <option value="14">Religious Studies</option>
+        </select>
+        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+            <span></span>
+            <span uk-icon="icon: chevron-down"></span>
+        </button>  
+    </div>
+    <div uk-form-custom="target: > * > span:first-child">
+            Grade:
+            <select id = "6">
+                <option value="">Please select grade</option>
+                <option value="1">A*</option>
+                <option value="2">A</option>
+                <option value="3">B</option>
+                <option value="4">C</option>
+                <option value="5">D</option>
+                <option value="6">E</option>
+                <option value="7">U</option>
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                    <span></span>
+                    <span uk-icon="icon: chevron-down"></span>
+            </button> 
+    </div>
+    <br><br>
+    <button type="button" uk-icon="icon: plus-circle" class = "add-subject">Add Subject </button>
+
+    <p>Where do you live?</p>
+    <div uk-form-custom="target: > * > span:first-child">
+            <select id = "7">
+                <option value="">Please select county</option>
+                <option value="1">Surrey</option>
+                <option value="2">Hampshire</option>
+                <option value="3">Greater London</option>
+                <option value="4">Sussex</option>
+                <option value="5">Essex</option>
+                <option value="6">Kent</option>
+                <option value="7">Shropshire</option>
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                    <span></span>
+                    <span uk-icon="icon: chevron-down"></span>
+            </button> 
+    </div>
+    <p>Do you require financial aid?</p>
+    <div uk-form-custom="target: > * > span:first-child">
+            <select id = "8">
+                <option value="">Select</option>
+                <option value="">Yes</option>
+                <option value="">No</option>
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                    <span></span>
+                    <span uk-icon="icon: chevron-down"></span>
+            </button> 
+    </div>
+    <br>
+    <br>
+    <button class="uk-button uk-button-default" id = "backEvent">Back</button>
+    <button class="uk-button uk-button-default" id = "submitEvent">Submit</button>
+    <br>
+    <br>
+</div>
+    
+</div>
+
+<script>
+$(document).ready(function() { let x = `<div uk-form-custom="target: > * > span:first-child">
+        Subject:     
+        <select id = "9">
+            <option value="">Please select A Level Subject</option>
+            <option value="1">Art</option>
+            <option value="2">Biology</option>
+            <option value="3">Chemistry</option>
+            <option value="4">Computer Science</option>
+            <option value="5">Economics</option>
+            <option value="6">English</option>
+            <option value="7">Geography</option>
+            <option value="8">History</option>
+            <option value="9">Mathematics</option>
+            <option value="10">Music</option>
+            <option value="11">Physics</option>
+            <option value="12">Politics</option>
+            <option value="13">Psychology</option>
+            <option value="14">Religious Studies</option>
+        </select>
+        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+            <span></span>
+            <span uk-icon="icon: chevron-down"></span>
+        </button>  
+    </div>
+    <div uk-form-custom="target: > * > span:first-child">
+            Grade:
+            <select>
+                <option value="">Please select grade</option>
+                <option value="">A*</option>
+                <option value="">A</option>
+                <option value="">B</option>
+                <option value="">C</option>
+                <option value="">D</option>
+                <option value="">E</option>
+                <option value="">U</option>
+            </select>
+            <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                    <span></span>
+                    <span uk-icon="icon: chevron-down"></span>
+            </button> 
+    </div> <br>`
+    $(".add-subject").click(function(){$(".add-subject").after(x);
+    $(".add-subject").remove();});
+    $("#backEvent").click(function(){location.href = "http://google.com";});
+    $("#submitEvent").click(function(){alert("AJ is so cool")});
+});
+</script>
+
+</body>
+</html>
