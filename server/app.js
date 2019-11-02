@@ -1,7 +1,10 @@
-const express = require('express')
+const express = require('express');
+const mongoose = require("mongoose");
 const app = express();
-const port = 3000
+const port = 3000;
 
-app.get('/', (req, res) => res.send('Hello World!'))
+//mongoose.connect('mongodb+srv://admin1:pass@cluster0-jai9z.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true});
+app.use(express.static('public'));
 
+app.get('/', (req, res) => res.sendFile("index.html"));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
