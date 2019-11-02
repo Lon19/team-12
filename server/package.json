@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/Lon19/team-12#readme",
   "dependencies": {
+    "easy-session": "^2.0.3",
     "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
     "mongoose": "^5.7.7"
   }
 }
