@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "ARG = $2" > _py_to_run.py
+cat $1 >> _py_to_run.py
+python3.5 _py_to_run.py
+rm -f _py_to_run.py
