@@ -33,10 +33,11 @@ print(dataset.head())
 
 regressors = {}
 
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 for i in range(len(courses)):
   indexFromEnd = i - len(courses)
 
-  X = dataset.iloc[:, -len(aLevels):].values
+  X = dataset.iloc[:, -len(aLevels) - len(courses):-len(courses)].values
   y = dataset.iloc[:, indexFromEnd].values
 
 
@@ -54,18 +55,20 @@ for i in range(len(courses)):
   regressors[courses[i]] = regressor
   
 
-#y_pred = regressor.predict(X_test)
+  y_pred = regressor.predict(X_test)
 
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 
-#print(confusion_matrix(y_test,y_pred))
-#print(classification_report(y_test,y_pred))
-#print(accuracy_score(y_test, y_pred))
+  #print(confusion_matrix(y_test,y_pred))
+  #print(classification_report(y_test,y_pred))
+  #print(accuracy_score(y_test, y_pred))
 
-aLevelsTaking = list(map(lambda _: 0, aLevels))
-aLevelsTaking[0] = 1
-aLevelsTaking[1] = 1
-aLevelsTaking[2] = 1
+aLevelsTaking2 = ['Physics', 'Chemistry', 'Maths', "Economics"]
+aLevelsTaking2 = map(lambda x: aLevels.index(x), aLevelsTaking2)
 
-print(regressors['Mathematics'].predict([aLevelsTaking]))
+aLevelsTaking = [0] * len(aLevels)
+for course in aLevelsTaking2:
+  aLevelsTaking[course] = 1
+
+for course in courses:
+  print(course + ": "+ str(regressors[course].predict([aLevelsTaking])[0]))
 
