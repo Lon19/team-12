@@ -20,7 +20,9 @@
       <div class="uk-background-primary" style="height: 75px;"></div>
       <div class="uk-position-center uk-text-center">
         <div class="uk-align-center" style="width: 300px;">
-            <img class="" src="logo.png" alt="organisation logo">
+            <a href="https://projectaccess.org/" target="_blank">
+                <img class="" src="logo.png" alt="organisation logo">
+            </a>
             <form>
                 <div class="uk-animation-fade">
                     <div class="uk-inline">
@@ -35,7 +37,7 @@
                     </div>
                 </div>
                 <div class="uk-form-row">
-                    <div class="uk-button uk-button-primary uk-button-large" href="#" style="width: 250px;" onclick="submitDetails()">Login</div>
+                    <div class="uk-button uk-button-primary uk-button-large" style="width: 250px;" onclick="submitDetails()">Login</div>
                 </div>
                 <div class="uk-margin">
                     <div class="uk-form-row uk-text-small">
@@ -55,6 +57,7 @@
               var password = $("#password").val();
               var remembered = $("#remembered").attr('checked');
               // save data somewhere
+              location.href='choice.html';
           }
       </script>
   </body>
