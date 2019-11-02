@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Login Page</title>
+    
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/css/uikit.min.css" />
+    
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/js/uikit-icons.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+      <div class="uk-background-primary" style="height: 75px;"></div>
+      <div class="uk-width-1-5 uk-align-right">
+          <a href="https://projectaccess.org/" target="_blank">
+            <img src="logo.png">
+          </a>
+      </div>
+      <div class="uk-position-center uk-text-center">
+          <div class="uk-margin">
+              <h1 class="uk-heading-small">What would you like to do?</h1>
+          </div>
+          <div class="" uk-grid>
+              <div>
+                  <div class="uk-padding uk-width-1-2 uk-inline uk-float-center">
+                      <div class="uk-box-shadow-small uk-box-shadow-hover-large">
+                          <a href="#">
+                              <img src="existingFile.png" data-srcset="" alt="">
+                              <div class="uk-overlay uk-overlay-primary uk-position-bottom">
+                                    <p>View previous result</p>
+                              </div>
+                          </a>
+                      </div>
+                </div>
+            </div>
+            <div>
+                <div class="uk-padding uk-width-1-2 uk-inline uk-float-center">
+                    <div class="uk-box-shadow-small uk-box-shadow-hover-large">
+                        <a href="questionspage.html">
+                            <img src="emptyFile.png" data-srcset="" alt="">
+                            <div class="uk-overlay uk-overlay-primary uk-position-bottom">
+                                    <p>I need some help</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <script>
+          function submitDetails() {
+              var username = $("#username").val();
+              var password = $("#password").val();
+              var remembered = $("#remembered").attr('checked');
+              // save data somewhere
+          }
+      </script>
+  </body>
+</html>
