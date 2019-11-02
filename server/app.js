@@ -37,9 +37,6 @@ app.use(session({
 }));
 app.use(easySession.main(session)); // Bind the module : line 2
 
-app.get("/login", (req, res) => res.render("login"));
-app.get('/', (req, res) => res.render("index"));
-
 app.post("/login", (req, res) => {
     req.session.login(req.body).then(() => {
         UserObject.updateOne({_id: req.body._id}, req.body, {upsert: true}, function(err) {
@@ -47,6 +44,9 @@ app.post("/login", (req, res) => {
         });
     });
 });
+
+app.get("/login", (req, res) => res.render("login"));
+app.get('/', (req, res) => res.render("index"));
 
 app.get("/dashboard", (req, res) => {
     if (req.session && req.session.isLoggedIn()) {
