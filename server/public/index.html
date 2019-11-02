@@ -62,7 +62,6 @@
 			margin-top: 0;
 			position: relative;
 			float: left;
-			z-index: 100;
 		}
 		.widget-content {
 			margin: 10%;
@@ -97,7 +96,7 @@
 			width: 65%;
 			margin: 1.5%;
 			margin-bottom: 1%;
-			margin-top: 0	;
+			margin-top: 0;
 			margin-left: 0;
 			float:left;
 			bottom: 0;
@@ -107,8 +106,8 @@
 			width: 31%;
 			float:left;
 			height: 50%;
-			margin-top: 0;
 			margin: 1.5%;
+			margin-top: 0;
 			margin-right: 0;
 			margin-bottom: 0;
 		}
@@ -121,7 +120,6 @@
       		margin-left: 0px;
 			width: 100%;
 			height: 15%;
-			z-index: 10;
 		}
 		.background-fixed {
 			position:fixed;
@@ -165,7 +163,7 @@
 				<div class="main-widget uk-card uk-card-default">
 					<div class="widget-content">
 						<strong>Imperial College London</strong>
-						<span>Computing (MEng)</span>
+						<span>Mathematics and Computer Science</span>
 					</div>
 				</div>
 				<div class="main-widget uk-card uk-card-default">
@@ -178,12 +176,6 @@
 					<div class="widget-content">
 						<strong>University of Durham</strong>
 						<span>Mathematics and Computer Science</span>
-					</div>
-				</div>
-				<div class="main-widget uk-card uk-card-default">
-					<div class="widget-content">
-						<strong>University of Durham</strong>
-						<span>IT</span>
 					</div>
 				</div>
 				<div class="main-widget add-widget uk-card uk-card-default">
@@ -202,12 +194,17 @@
 				</div>
 				<div class="small-info-card">
 					<div class="uk-card uk-card-default uk-card-body">
-						<!-- <h3 class="uk-card-title">Key Dates</h3>
-						<p>15th January 2019 - Deadline for undergraduate courses 
-							<br>5th July 2019 - Clearing opens
-							<br>15th August 2019 - A Level results day
-						</p> -->
-						<h3 class="uk-card-title">Student Finance</h3>
+						<h3 class="uk-card-title">Key Dates</h3>
+						<p><strong>15th January 2019 </strong><br>
+							Deadline for undergraduate courses 
+							<br>
+							<br><strong>5th July 2019 </strong>
+							<br>
+							Clearing opens
+							<br>
+							<br><strong>15th August 2019</strong>
+							<br>A Level results day
+						</p>
 					</div>
 				</div>
 				<div class="big-info-card">
@@ -222,25 +219,28 @@
 					</div>
 			</div>
 			<br>
-			<!-- This is an anchor toggling the modal -->
-			<a href="#my-id" data-uk-modal>...asdfjiadsdfiosafiousabdfsuhfbsuhidbfsuih</a>
-			
-			<!-- This is a button toggling the modal -->
-			<!-- <button class="uk-button" data-uk-modal="{target:'#my-id'}">...</button> -->
-
-			<!-- This is the modal -->
-			<div id="asda" class="uk-modal"> -->
-				<div class="uk-modal-dialog">
-					<a class="uk-modal-close uk-close"></a>
-				</div>
+			<br>
+			<!-- Modal HTML embedded directly into document -->
+			<div id="uniInfo" class="modal">
+				<h3 id="uniHeader"></h3>
+				<p id="uniText"></p>
+				<a href="#" rel="modal:close">Close</a>
 			</div>
 			
-			<br>
-
-		
+			<!-- Link to open the modal -->
+			<p><a href="#uniInfo" rel="modal:open">Open Modal</a></p>
+				
 		<script>
-
-
+			let h1 = "Imperial College London, Mathematics and Computer Science - A* A* A A + STEP";
+			let h2 = "University of Cambridge, Computer Science - A* A* A + CSAT";
+			let h3 = "University of Durham, Computer Science - A* A A";
+			let s1 = `With the spread of computing procedures and mathematical ideas into many areas, there is high demand for professionals who are expert in both.
+			Our Mathematics and Computer Science degrees are mathematical courses orientated towards computing science. Taught jointly by the Departments of Computing and Mathematics, they provide a firm foundation in mathematics, particularly in pure mathematics, numerical analysis and statistics. They also cover all the essentials of computer science, with an emphasis on developing software, as well as more theoretical topics.`;
+			let s2 = `Cambridge was a pioneer of computer science and continues to lead its development. There are more than 1,000 specialist computing and advanced technology companies and commercial laboratories in the area (known as ‘Silicon Fen'). A number of local firms and start-ups support our teaching and employ our graduates.
+			\nOur course is broad and deep – giving skills to create future technology.`;
+			let s3 = `
+Computer Science at Durham will provide you with the opportunity to gain academic and transferable skills along with fundamental technical knowledge of Computer Science by academics who work with cutting-edge research and provide an awareness of the role of Computer Science in modern society.
+`;
 			var maxHeight = 0;
 			$(".main-widget").each(function () {
 				if ($(this).height() > maxHeight) {
@@ -273,8 +273,28 @@
 				});
 				$(".main-widget").height(maxHeight);
 				};
-
+				$(".main-widget:not(.add-widget)").css('cursor', 'pointer').click(function() {switch ($(".main-widget").index(this)){
+					case 0:
+						$("#uniHeader").text(h1);
+						$("#uniText").text(s1);
+						break;
+					case 1:
+						$("#uniHeader").text(h2);
+						$("#uniText").text(s2);
+						break;
+					case 2:
+						$("#uniHeader").text(h3);
+						$("#uniText").text(s3);
+						break;
+					default:
+						$("#uniHeader").text("N/A");
+						$("#uniText").text("N/A");
+						break;
+				};$("#uniInfo").modal({
+  				fadeDuration: 100
+			});});
 			$('.add-widget').css('cursor', 'pointer').click(function() {addUni("Imperial", "Computing")});
+			
 			</script>
 		
 	</div>
