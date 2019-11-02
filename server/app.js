@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 const UserObject = require("./models/user");
 
-mongoose.connect('mongodb+srv://admin1:pass@cluster0-jai9z.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect('mongodb+srv://admin1:pass@cluster0-jai9z.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.engine(
     "hbs",
@@ -54,6 +54,28 @@ app.get("/dashboard", (req, res) => {
     } else {
         res.redirect("/login");
     }
+});
+
+app.post("/feedback", (req, res) => {
+    let {subject1, subject2, subject3, subject4, grade1, grade2, grade3, grade4} = req.body;
+    let subjects = JSON.stringify([subject1, subject2, subject3, subject4]);
+    let grades = JSON.stringify([grade1, grade2, grade3, grade4]);
+
+    const { spawn } = require('child_process');
+    const courseProcess = spawn('../recommendation/py_wrapper', ['../recommendation/course_recommendation.py', 'course.py', subjects]);
+
+    courseProcess.stdout.on('data', function(data) {
+        recommendation = JSON.parse(data.toString())
+        console.log(recommendation)
+    });
+
+    const uniProcess = spawn('../recommendation/py_wrapper', ['../recommendation/uni_recommendation.py', 'uni.py', grades]);
+
+    uniProcess.stdout.on('data', (data) => {
+        recommendation = JSON.parse(data.toString())
+        console.log(recommendation);
+    })
+    res.send('Hello')
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

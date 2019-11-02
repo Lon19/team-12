@@ -1,3 +1,5 @@
+import json
+
 grade_Converter = {"A*" : 56,
                    "A" : 48,
                    "B" : 40,
@@ -18,4 +20,4 @@ ucas_Score = sum(map(lambda x: grade_Converter[x], predicted_Grades))
 
 valid_Unis = list(map(lambda x: x[0], (filter(lambda x: x[1] <= ucas_Score, uni_Requirements))))
 
-print(valid_Unis)
+print(json.dumps(valid_Unis))

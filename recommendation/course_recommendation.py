@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import json
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
@@ -8,7 +9,7 @@ aLevels = ['Art', 'Biology', 'Chemistry', 'Computer Science', 'Economics', 'Engl
 
 courses = ['Mathematics', 'Computer Science', 'Physics', 'Biology', 'Chemistry', 'Architecture', 'Art', 'Mechanical Engineering', 'Medicine']
 
-dataset = pd.read_csv('data.csv')
+dataset = pd.read_csv('../recommendation/data.csv')
 
 colOffset = dataset.shape[1]
 for i in range(len(aLevels)):
@@ -72,4 +73,4 @@ for course in courses:
 recommendation.sort(key = lambda x: x[1], reverse = True)
 recommendation = list(map(lambda x: x[0], recommendation))
 
-print(recommendation[:3])
+print(json.dumps(recommendation[:3]))
