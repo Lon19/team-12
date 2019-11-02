@@ -241,7 +241,9 @@ $(document).ready(function() { let x = `<div uk-form-custom="target: > * > span:
             "subject4": $("#9").val(),
             "grade4": $("#10").val(),
         }
-        $.post("URL", data);
+        $.post("/feedback", data, function(data) {
+            window.location.href = "/dashboard";
+        });
     });
 });
 </script>

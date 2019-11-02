@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 const UserObject = require("./models/user");
 
-//mongoose.connect('mongodb+srv://admin1:pass@cluster0-jai9z.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://admin1:pass@cluster0-jai9z.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.engine(
     "hbs",
@@ -50,13 +50,21 @@ app.get('/', (req, res) => res.render("index"));
 
 app.get("/dashboard", (req, res) => {
     if (req.session && req.session.isLoggedIn()) {
-        res.render("index");
+        UserObject.findOne({username: req.session.username}, function(err, obj) {
+            res.render("index", {"courses": obj.course, "universities": obj.university});
+        });
     } else {
         res.redirect("/login");
     }
 });
 
+app.get("/questions", (req, res) => {
+    res.render("questionspage");
+})
+
 app.post("/feedback", (req, res) => {
+    let username = (req.session) ? req.session.username : null;
+
     let {subject1, subject2, subject3, subject4, grade1, grade2, grade3, grade4} = req.body;
     let subjects = JSON.stringify([subject1, subject2, subject3, subject4]);
     let grades = JSON.stringify([grade1, grade2, grade3, grade4]);
@@ -65,8 +73,9 @@ app.post("/feedback", (req, res) => {
     const courseProcess = spawn('../recommendation/py_wrapper', ['../recommendation/course_recommendation.py', 'course.py', subjects]);
 
     courseProcess.stdout.on('data', function(data) {
-        recommendation = JSON.parse(data.toString())
-        console.log(recommendation)
+        recommendation = JSON.parse(data.toString());
+        console.log(recommendation);
+        UserObject.findOneAndUpdate({username}, {course: recommendation}).save();
     });
 
     const uniProcess = spawn('../recommendation/py_wrapper', ['../recommendation/uni_recommendation.py', 'uni.py', grades]);
@@ -74,8 +83,9 @@ app.post("/feedback", (req, res) => {
     uniProcess.stdout.on('data', (data) => {
         recommendation = JSON.parse(data.toString())
         console.log(recommendation);
+        UserObject.findOneAndUpdate({username}, {university: recommendation}).save();
     })
-    res.send('Hello')
+    res.redirect('/dashboard');
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

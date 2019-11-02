@@ -237,6 +237,9 @@
 			
 			<br>
 
+			{{ universities }}
+
+			{{ courses }}
 		
 		<script>
 
@@ -274,7 +277,10 @@
 				$(".main-widget").height(maxHeight);
 				};
 
-			$('.add-widget').css('cursor', 'pointer').click(function() {addUni("Imperial", "Computing")});
+			$('.add-widget').css('cursor', 'pointer').click(function() {
+					window.location.href = "/questions";
+				//addUni("Imperial", "Computing");
+				});
 			</script>
 		
 	</div>
