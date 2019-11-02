@@ -3,6 +3,8 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/css/uikit.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 	<style>
 		body {
 			padding: 0;
@@ -94,7 +96,8 @@
 		.big-info-card {
 			width: 65%;
 			margin: 1.5%;
-			margin-bottom: 0;
+			margin-bottom: 1%;
+			margin-top: 0	;
 			margin-left: 0;
 			float:left;
 			bottom: 0;
@@ -104,6 +107,7 @@
 			width: 31%;
 			float:left;
 			height: 50%;
+			margin-top: 0;
 			margin: 1.5%;
 			margin-right: 0;
 			margin-bottom: 0;
@@ -119,9 +123,16 @@
 			height: 15%;
 			z-index: 10;
 		}
+		.background-fixed {
+			position:fixed;
+			height: 200%;
+			width: 100%;
+			background-color: #F9F9F9;
+		}
 	</style>
 </head>
 <body>
+	<div class="background-fixed"></div>
 	<div class="sidebar">
 		<div class="logo">
 			<div class="logo1"></div>
@@ -142,11 +153,8 @@
 		</ul>
 
 		<ul class="uk-list" style="text-align: right; margin: 50px;">
-			<li class="uk-text-uppercase uk-text-primary uk-text-small">Articles by mentors</li>
-			<li>How to make the most out of UCAS</li>
-			<li>Tailoring your personal statement for Russell Groups</li>
-			<li>Applying for Student Finance</li>
-			<li class="uk-text-uppercase uk-text-primary uk-text-small">View more</li>
+			<li class="uk-text-uppercase uk-text-primary uk-text-small"></li>
+			<li><a href = "index.html">Log off</a></li>
 		</ul>
 	</div>
 
@@ -202,30 +210,74 @@
 						<h3 class="uk-card-title">Student Finance</h3>
 					</div>
 				</div>
+				<div class="big-info-card">
+						<div class="uk-card uk-card-default uk-card-body" style = "margin-bottom: 3%">
+							<h3 class="uk-card-title">Articles by mentors</h3>
+							<p><ul class="uk-list uk-list-divider">
+								<li><a href = "">How to make the most out of UCAS</a></li>
+								<li><a href = "">Tailoring your personal statement for Russell Groups</a></li>
+								<li><a href = "">Applying for Student Finance</a></li>
+							</ul>
+						</div>
+					</div>
 			</div>
-		</div>	
+			<br>
+			<!-- This is an anchor toggling the modal -->
+			<a href="#my-id" data-uk-modal>...asdfjiadsdfiosafiousabdfsuhfbsuhidbfsuih</a>
+			
+			<!-- This is a button toggling the modal -->
+			<!-- <button class="uk-button" data-uk-modal="{target:'#my-id'}">...</button> -->
+
+			<!-- This is the modal -->
+			<div id="asda" class="uk-modal"> -->
+				<div class="uk-modal-dialog">
+					<a class="uk-modal-close uk-close"></a>
+				</div>
+			</div>
+			
+			<br>
 
 		
 		<script>
+
+
 			var maxHeight = 0;
-				$(".main-widget").each(function () {
-					if ($(this).height() > maxHeight) {
-						maxHeight = $(this).height();
-					}
-				});
-				$(".main-widget").height(maxHeight);
-			$(window).on('resize', function(){
-			var maxHeight = 0;
-				$(".main-widget").each(function () {
-					if ($(this).height() > maxHeight) {
-						maxHeight = $(this).height();
-					}
-				});
-				$(".main-widget").height(maxHeight);
+			$(".main-widget").each(function () {
+				if ($(this).height() > maxHeight) {
+					maxHeight = $(this).height();
+				}
+			});
+			$(".main-widget").height(maxHeight);
+
+			$(window).on('resize', function(){ var maxHeight = 0;
+			$(".main-widget").each(function () {
+				if ($(this).height() > maxHeight) {
+					maxHeight = $(this).height();
+				}
+			});
+			$(".main-widget").height(maxHeight);
 			});
 
+			let addUni = function(uni, description){
+					$('.add-widget').before(`<div class="main-widget uk-card uk-card-default">
+					<div class="widget-content">
+						<strong>${uni}</strong>
+						<span>${description}</span>
+					</div>
+				</div>`);
+				var maxHeight = 0;
+				$(".main-widget").each(function () {
+					if ($(this).height() > maxHeight) {
+						maxHeight = $(this).height();
+					}
+				});
+				$(".main-widget").height(maxHeight);
+				};
+
+			$('.add-widget').css('cursor', 'pointer').click(function() {addUni("Imperial", "Computing")});
 			</script>
 		
 	</div>
+	
 </body>
 </html>
