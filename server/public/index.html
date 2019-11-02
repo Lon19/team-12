@@ -2,7 +2,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/css/uikit.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<style>
 		body {
 			padding: 0;
@@ -44,7 +44,7 @@
 		}
 		.main-foreground {
 			background-color: #F9F9F9;
-			height: 100%;
+			height: 90%;
 			width: 100%;
 			margin-top: 10%;
 			position: absolute;
@@ -52,7 +52,7 @@
 		}
 		.main-widget {
 			background-color: white;
-			height: 18%;
+			height: 25%;
 			width: 30%;
 			margin: 1.5%;
 			margin-bottom: 0;
@@ -63,6 +63,12 @@
 			margin: 10%;
 			font-size: 20px;
 			color: black;
+		}
+		.add-widget {
+			background-color: #dbdbdb;
+		}
+		.add-widget:hover {
+			background-color: lightgrey;
 		}
 		.widget-content > span {
 			font-size: 16px;
@@ -75,9 +81,27 @@
 		.main-info {
 			display: block;
 			margin: 1.5%;
+			height: 50%;
 		}
-		.info-card {
-			width: 55%;
+		.big-info-card {
+			width: 65%;
+			margin: 1.5%;
+			margin-bottom: 0;
+			margin-left: 0;
+			float:left;
+			bottom: 0;
+		}
+		.small-info-card {
+			display: block;
+			width: 31%;
+			float:left;
+			height: 50%;
+			margin: 1.5%;
+			margin-right: 0;
+			margin-bottom: 0;
+		}
+		.uk-card {
+			color: black;
 		}
 	</style>
 </head>
@@ -115,20 +139,53 @@
 						<span>IT</span>
 					</div>
 				</div>
+				<div class="main-widget add-widget">
+					<div class="widget-content">
+						+
+					</div>
+				</div>
 			</div>
 
 			<div class="main-info">
-				<div class="info-card">
+				<div class="big-info-card">
 					<div class="uk-card uk-card-default uk-card-body">
-						<h3 class="uk-card-title">Default</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<h3 class="uk-card-title">Computer Science</h3>
+						<p>Computer science and the problem solving and IT skills it develops can be useful in many different careers such as information technology and information management, engineering and manufacturing, construction, broadcast media and performing arts, management, journalism and publishing, and medical technology.</p>
+					</div>
+				</div>
+				<div class="small-info-card">
+					<div class="uk-card uk-card-default uk-card-body">
+						<!-- <h3 class="uk-card-title">Key Dates</h3>
+						<p>15th January 2019 - Deadline for undergraduate courses 
+							<br>5th July 2019 - Clearing opens
+							<br>15th August 2019 - A Level results day
+						</p> -->
+						<h3 class="uk-card-title">Student Finance</h3>
 					</div>
 				</div>
 			</div>
 		</div>	
 
 		
-		
+		<script>
+			var maxHeight = 0;
+				$(".main-widget").each(function () {
+					if ($(this).height() > maxHeight) {
+						maxHeight = $(this).height();
+					}
+				});
+				$(".main-widget").height(maxHeight);
+			$(window).on('resize', function(){
+			var maxHeight = 0;
+				$(".main-widget").each(function () {
+					if ($(this).height() > maxHeight) {
+						maxHeight = $(this).height();
+					}
+				});
+				$(".main-widget").height(maxHeight);
+			});
+
+			</script>
 		
 	</div>
 </body>
