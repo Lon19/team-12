@@ -39,7 +39,7 @@ app.use(easySession.main(session)); // Bind the module : line 2
 
 app.post("/login", (req, res) => {
     req.session.login(req.body).then(() => {
-        UserObject.updateOne({_id: req.body._id}, req.body, {upsert: true}, function(err) {
+        UserObject.updateOne({username: req.body.username}, req.body, {upsert: true}, function(err) {
             res.redirect("/dashboard");
         });
     });
@@ -63,27 +63,41 @@ app.get("/questions", (req, res) => {
 })
 
 app.post("/feedback", (req, res) => {
+    console.log("SESSION");
+    console.log(req.session);
     let username = (req.session) ? req.session.username : null;
 
     let {subject1, subject2, subject3, subject4, grade1, grade2, grade3, grade4} = req.body;
-    let subjects = JSON.stringify([subject1, subject2, subject3, subject4]);
-    let grades = JSON.stringify([grade1, grade2, grade3, grade4]);
+    console.log(req.body);
+    let subjects = [subject1, subject2, subject3];
+    subjects.push((subject4 ? subject4 : "nothing"));
+    subjects = JSON.stringify(subjects);
+
+    let grades = [grade1, grade2, grade3];
+    if (grade4) grades.push(grade4);
+    grades = JSON.stringify(grades);
+
+    console.log(subjects);
+    console.log(grades);
 
     const { spawn } = require('child_process');
     const courseProcess = spawn('../recommendation/py_wrapper', ['../recommendation/course_recommendation.py', 'course.py', subjects]);
 
-    courseProcess.stdout.on('data', function(data) {
+    courseProcess.stdout.on('data', async function(data) {
         recommendation = JSON.parse(data.toString());
         console.log(recommendation);
-        UserObject.findOneAndUpdate({username}, {course: recommendation}).save();
+        let aUserObj = UserObject;
+        await aUserObj.findOneAndUpdate({username: username}, {course: recommendation}, {"useFindAndModify":false});
     });
 
     const uniProcess = spawn('../recommendation/py_wrapper', ['../recommendation/uni_recommendation.py', 'uni.py', grades]);
 
-    uniProcess.stdout.on('data', (data) => {
+    uniProcess.stdout.on('data', async (data) => {
         recommendation = JSON.parse(data.toString())
         console.log(recommendation);
-        UserObject.findOneAndUpdate({username}, {university: recommendation}).save();
+        console.log("USERNAME IS :" + username);
+
+        await UserObject.findOneAndUpdate({username: username}, {university: recommendation}, {"useFindAndModify":false});
     })
     res.redirect('/dashboard');
 });

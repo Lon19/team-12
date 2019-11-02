@@ -236,10 +236,6 @@
 			</div>
 			
 			<br>
-
-			{{ universities }}
-
-			{{ courses }}
 		
 		<script>
 
@@ -275,7 +271,15 @@
 					}
 				});
 				$(".main-widget").height(maxHeight);
-				};
+			};
+
+			$(document).ready(function() {
+				var unis = ["{{{universities}}}"];
+				var courses = ["{{{courses}}}"];
+				if (unis.length != 0 && unis[0] != "") {
+					addUni(unis[0].split(",")[0], courses[0].split(",")[0]);
+				}
+			});
 
 			$('.add-widget').css('cursor', 'pointer').click(function() {
 					window.location.href = "/questions";
